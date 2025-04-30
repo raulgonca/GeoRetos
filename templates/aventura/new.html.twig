@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Aventura{% endblock %}
+
+{% block body %}
+    <h1>Create new Aventura</h1>
+
+    {{ include('aventura/_form.html.twig') }}
+
+    <a href="{{ path('app_aventura_index') }}">back to list</a>
+{% endblock %}

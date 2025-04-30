@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reto{% endblock %}
+
+{% block body %}
+    <h1>Edit Reto</h1>
+
+    {{ include('reto/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_reto_index') }}">back to list</a>
+
+    {{ include('reto/_delete_form.html.twig') }}
+{% endblock %}

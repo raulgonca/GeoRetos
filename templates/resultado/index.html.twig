@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resultado index{% endblock %}
+
+{% block body %}
+    <h1>Resultado index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Puntos</th>
+                <th>Fecha</th>
+                <th>Nombre_publico</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for resultado in resultados %}
+            <tr>
+                <td>{{ resultado.id }}</td>
+                <td>{{ resultado.puntos }}</td>
+                <td>{{ resultado.fecha ? resultado.fecha|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ resultado.nombrePublico ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_resultado_show', {'id': resultado.id}) }}">show</a>
+                    <a href="{{ path('app_resultado_edit', {'id': resultado.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_resultado_new') }}">Create new</a>
+{% endblock %}

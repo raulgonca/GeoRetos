@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aventura index{% endblock %}
+
+{% block body %}
+    <h1>Aventura index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Imagen_portada</th>
+                <th>Numero_de_retos</th>
+                <th>Creado_en</th>
+                <th>Actualizado_en</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for aventura in aventuras %}
+            <tr>
+                <td>{{ aventura.id }}</td>
+                <td>{{ aventura.titulo }}</td>
+                <td>{{ aventura.descripcion }}</td>
+                <td>{{ aventura.imagenPortada }}</td>
+                <td>{{ aventura.numeroDeRetos }}</td>
+                <td>{{ aventura.creadoEn ? aventura.creadoEn|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ aventura.actualizadoEn ? aventura.actualizadoEn|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_aventura_show', {'id': aventura.id}) }}">show</a>
+                    <a href="{{ path('app_aventura_edit', {'id': aventura.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_aventura_new') }}">Create new</a>
+{% endblock %}

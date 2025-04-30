@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reto index{% endblock %}
+
+{% block body %}
+    <h1>Reto index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Instrucciones</th>
+                <th>Tipo_reto</th>
+                <th>Imagen_reto</th>
+                <th>Respuestas</th>
+                <th>Respuesta_correcta</th>
+                <th>Latitud</th>
+                <th>Longitud</th>
+                <th>Margen_error_metros</th>
+                <th>Puntos_fallo_0</th>
+                <th>Puntos_fallo_1</th>
+                <th>Puntos_fallo_2</th>
+                <th>Puntos_fallo_3</th>
+                <th>Es_obligatorio_superar</th>
+                <th>Creado</th>
+                <th>Actualizado</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reto in retos %}
+            <tr>
+                <td>{{ reto.id }}</td>
+                <td>{{ reto.titulo }}</td>
+                <td>{{ reto.descripcion }}</td>
+                <td>{{ reto.instrucciones }}</td>
+                <td>{{ reto.tipoReto }}</td>
+                <td>{{ reto.imagenReto }}</td>
+                <td>{{ reto.respuestas ? reto.respuestas|json_encode : '' }}</td>
+                <td>{{ reto.respuestaCorrecta }}</td>
+                <td>{{ reto.latitud }}</td>
+                <td>{{ reto.longitud }}</td>
+                <td>{{ reto.margenErrorMetros }}</td>
+                <td>{{ reto.puntosFallo0 }}</td>
+                <td>{{ reto.puntosFallo1 }}</td>
+                <td>{{ reto.puntosFallo2 }}</td>
+                <td>{{ reto.puntosFallo3 }}</td>
+                <td>{{ reto.esObligatorioSuperar ? 'Yes' : 'No' }}</td>
+                <td>{{ reto.creado ? reto.creado|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reto.actualizado ? reto.actualizado|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_reto_show', {'id': reto.id}) }}">show</a>
+                    <a href="{{ path('app_reto_edit', {'id': reto.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reto_new') }}">Create new</a>
+{% endblock %}

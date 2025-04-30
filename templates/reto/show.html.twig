@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reto{% endblock %}
+
+{% block body %}
+    <h1>Reto</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reto.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ reto.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ reto.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Instrucciones</th>
+                <td>{{ reto.instrucciones }}</td>
+            </tr>
+            <tr>
+                <th>Tipo_reto</th>
+                <td>{{ reto.tipoReto }}</td>
+            </tr>
+            <tr>
+                <th>Imagen_reto</th>
+                <td>{{ reto.imagenReto }}</td>
+            </tr>
+            <tr>
+                <th>Respuestas</th>
+                <td>{{ reto.respuestas ? reto.respuestas|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Respuesta_correcta</th>
+                <td>{{ reto.respuestaCorrecta }}</td>
+            </tr>
+            <tr>
+                <th>Latitud</th>
+                <td>{{ reto.latitud }}</td>
+            </tr>
+            <tr>
+                <th>Longitud</th>
+                <td>{{ reto.longitud }}</td>
+            </tr>
+            <tr>
+                <th>Margen_error_metros</th>
+                <td>{{ reto.margenErrorMetros }}</td>
+            </tr>
+            <tr>
+                <th>Puntos_fallo_0</th>
+                <td>{{ reto.puntosFallo0 }}</td>
+            </tr>
+            <tr>
+                <th>Puntos_fallo_1</th>
+                <td>{{ reto.puntosFallo1 }}</td>
+            </tr>
+            <tr>
+                <th>Puntos_fallo_2</th>
+                <td>{{ reto.puntosFallo2 }}</td>
+            </tr>
+            <tr>
+                <th>Puntos_fallo_3</th>
+                <td>{{ reto.puntosFallo3 }}</td>
+            </tr>
+            <tr>
+                <th>Es_obligatorio_superar</th>
+                <td>{{ reto.esObligatorioSuperar ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Creado</th>
+                <td>{{ reto.creado ? reto.creado|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Actualizado</th>
+                <td>{{ reto.actualizado ? reto.actualizado|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reto_index') }}">back to list</a>
+
+    <a href="{{ path('app_reto_edit', {'id': reto.id}) }}">edit</a>
+
+    {{ include('reto/_delete_form.html.twig') }}
+{% endblock %}

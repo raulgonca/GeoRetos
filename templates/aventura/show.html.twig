@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aventura{% endblock %}
+
+{% block body %}
+    <h1>Aventura</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ aventura.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ aventura.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ aventura.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Imagen_portada</th>
+                <td>{{ aventura.imagenPortada }}</td>
+            </tr>
+            <tr>
+                <th>Numero_de_retos</th>
+                <td>{{ aventura.numeroDeRetos }}</td>
+            </tr>
+            <tr>
+                <th>Creado_en</th>
+                <td>{{ aventura.creadoEn ? aventura.creadoEn|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Actualizado_en</th>
+                <td>{{ aventura.actualizadoEn ? aventura.actualizadoEn|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_aventura_index') }}">back to list</a>
+
+    <a href="{{ path('app_aventura_edit', {'id': aventura.id}) }}">edit</a>
+
+    {{ include('aventura/_delete_form.html.twig') }}
+{% endblock %}

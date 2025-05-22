@@ -68,7 +68,7 @@ final class RetoController extends AbstractController
             return new JsonResponse([
                 'message' => 'Reto creado correctamente',
                 'id' => $reto->getId()
-                
+
             ], Response::HTTP_CREATED);
         } catch (\Exception $e) {
             return new JsonResponse(['error' => 'Error al crear el reto: ' . $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
